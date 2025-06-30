@@ -1,7 +1,10 @@
 import React from "react";
-import { months } from "../lib/months";
 
-const Header = () => {
+interface HeaderProps {
+  months: string[];
+}
+
+const Header = ({ months }: HeaderProps) => {
   return (
     <thead className="bg-gray-100">
       <tr>
