@@ -9,7 +9,7 @@ interface TotalRowProps {
 const TotalRow = ({ total, monthIndices }: TotalRowProps) => {
   return (
     <>
-      <tr className="bg-gray-50 font-medium text-sm text-blue-900">
+      <tr className="bg-gray-50 font-medium text-sm text-blue-300">
         <td className="p-3 border" rowSpan={2}>Manager</td>
         <td className="p-3 border">Total income:</td>
         {monthIndices.map((i) => {
@@ -25,8 +25,9 @@ const TotalRow = ({ total, monthIndices }: TotalRowProps) => {
             </React.Fragment>
           );
         })}
+        <td className="p-3 border bg-gray-50" rowSpan={2}></td>
       </tr>
-      <tr className="bg-gray-50 font-medium text-sm text-blue-900">
+      <tr className="bg-gray-50 font-medium text-sm text-blue-300">
         <td className="p-3 border">Total active partners:</td>
         {monthIndices.map((i) => {
           const item = total[i];
