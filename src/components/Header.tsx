@@ -6,12 +6,12 @@ interface HeaderProps {
 
 const Header = ({ months }: HeaderProps) => {
   return (
-    <thead className="bg-gray-100">
+    <thead className="bg-blue-50 text-[13px] tracking-wide text-blue-900">
       <tr>
-        <th className="p-2 border" rowSpan={2}></th>
-        <th className="p-2 border" rowSpan={2}></th>
+        <th className="p-3 border font-medium text-center" rowSpan={2}></th>
+        <th className="p-3 border font-medium text-center" rowSpan={2}></th>
         {months.map((month) => (
-          <th className="p-2 border text-center" colSpan={2} key={month}>
+          <th className="p-3 border border-b-0 font-semibold text-left text-[16px]" colSpan={2} key={month}>
             {month}
           </th>
         ))}
@@ -19,8 +19,8 @@ const Header = ({ months }: HeaderProps) => {
       <tr>
         {months.map((_, index) => (
           <React.Fragment key={index}>
-            <th className="p-2 border text-center">Plan</th>
-            <th className="p-2 border text-center">Fact</th>
+            <th className="p-3 border border-t-0 border-r-0 font-medium text-left text-gray-600">Plan:</th>
+            <th className="p-3 border border-t-0 border-l-0 font-medium text-left text-gray-600">Fact:</th>
           </React.Fragment>
         ))}
       </tr>
