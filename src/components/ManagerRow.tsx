@@ -10,7 +10,9 @@ const ManagerRow = ({ admin, monthIndices }: ManagerRowProps) => {
   return (
     <>
       <tr>
-        <td className="p-3 border font-bold text-center text-[15px] text-blue-900" rowSpan={2}>{admin.adminName}</td>
+        <td className="p-3 border" rowSpan={2}>
+          <p className="font-bold text-center text-[15px] text-blue-900">{admin.adminName}</p>
+        </td>
         <td className="p-3 border">Income:</td>
         {monthIndices.map((i) => {
           const month = admin.months[i];
@@ -19,11 +21,11 @@ const ManagerRow = ({ admin, monthIndices }: ManagerRowProps) => {
             return (
               <td
                 key={`node-income-${admin.id}-${i}`}
-                className="p-3 border text-left text-gray-500 italic bg-gray-50"
+                className="p-3 border"
                 rowSpan={2}
                 colSpan={2}
               >
-                No data
+                <p className="text-left text-gray-300 italic">No data</p>
               </td>
             );
           }
@@ -35,6 +37,9 @@ const ManagerRow = ({ admin, monthIndices }: ManagerRowProps) => {
             </React.Fragment>
           );
         })}
+        <td className="p-3 border" rowSpan={2}>
+          <p className="text-center text-gray-500">...</p>
+        </td>
       </tr>
       <tr>
         <td className="p-3 border">Active partners:</td>
