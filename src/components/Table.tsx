@@ -53,7 +53,7 @@ const Table = () => {
     <div className="p-4">
       <TableControls onNext={handleNext} onPrev={handlePrev} />
       <div className="overflow-x-auto border rounded-md">
-        <table className="min-w-[900px] w-full border-collapse text-sm text-left text-blue-900 shadow-sm rounded-md overflow-hidden">
+        <table className="min-w-[900px] w-full border-collapse text-sm text-left text-blue-300 shadow-sm rounded-md overflow-hidden">
           <Header months={visibleMonths} />
           <tbody>
             <TotalRow total={total} monthIndices={visibleMonthIndices} />
