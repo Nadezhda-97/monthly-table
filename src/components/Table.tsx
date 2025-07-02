@@ -12,8 +12,9 @@ const Table = () => {
   const [admins, setAdmins] = useState<AdminData[]>([]);
   const [total, setTotal] = useState<TotalItem[]>([]);
   const [loading, setLoading] = useState<boolean | null>(null);
+  const [hoveredColIndex, setHoveredColIndex] = useState<number | null>(null);
 
-  const currentMonthIndex = new Date().getMonth(); // 0-11
+  const currentMonthIndex = new Date().getMonth();
   const [startMonthIndex, setStartMonthIndex] = useState(currentMonthIndex);
 
   const visibleMonthIndices = Array.from({ length: 6 }, (_, i) =>
@@ -52,13 +53,28 @@ const Table = () => {
   return (
     <div className="p-4">
       <TableControls onNext={handleNext} onPrev={handlePrev} />
-      <div className="overflow-x-auto border rounded-md">
+      <div className="overflow-x-auto border border-blue-200 rounded-md">
         <table className="min-w-[900px] w-full border-collapse text-sm text-left text-blue-300 shadow-sm rounded-md overflow-hidden">
-          <Header months={visibleMonths} />
+          <Header
+            months={visibleMonths}
+            hoveredColIndex={hoveredColIndex}
+            setHoveredColIndex={setHoveredColIndex}
+          />
           <tbody>
-            <TotalRow total={total} monthIndices={visibleMonthIndices} />
+            <TotalRow
+              total={total}
+              monthIndices={visibleMonthIndices}
+              hoveredColIndex={hoveredColIndex}
+              setHoveredColIndex={setHoveredColIndex}
+            />
             {admins.map((admin) => (
-              <ManagerRow key={admin.id} admin={admin} monthIndices={visibleMonthIndices} />
+              <ManagerRow
+                key={admin.id}
+                admin={admin}
+                monthIndices={visibleMonthIndices}
+                hoveredColIndex={hoveredColIndex}
+                setHoveredColIndex={setHoveredColIndex}
+              />
             ))}
           </tbody>
         </table>
