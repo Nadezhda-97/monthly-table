@@ -4,24 +4,28 @@ import type { AdminData } from "../types/api";
 interface ManagerRowProps {
   admin: AdminData;
   monthIndices: number[];
+  hoveredColIndex: number | null;
+  setHoveredColIndex: (index: number | null) => void;
 }
 
-const ManagerRow = ({ admin, monthIndices }: ManagerRowProps) => {
+const ManagerRow = ({ admin, monthIndices, hoveredColIndex, setHoveredColIndex }: ManagerRowProps) => {
   return (
     <>
       <tr>
-        <td className="p-3 border" rowSpan={2}>
-          <p className="font-bold text-center text-[15px] text-blue-900">{admin.adminName}</p>
+        <td className="p-3 border border-blue-200" rowSpan={2}>
+          <p className="font-bold text-center text-[15px] text-blue-800">{admin.adminName}</p>
         </td>
-        <td className="p-3 border">Income:</td>
-        {monthIndices.map((i) => {
+        <td className="p-3 border border-blue-200">Income:</td>
+        {monthIndices.map((i, index) => {
           const month = admin.months[i];
 
           if (!month) {
             return (
               <td
                 key={`node-income-${admin.id}-${i}`}
-                className="p-3 border"
+                className="p-3 border border-blue-200"
+                onMouseEnter={() => setHoveredColIndex(index)}
+                onMouseLeave={() => setHoveredColIndex(null)}
                 rowSpan={2}
                 colSpan={2}
               >
@@ -32,18 +36,34 @@ const ManagerRow = ({ admin, monthIndices }: ManagerRowProps) => {
       
           return (
             <React.Fragment key={`row-${admin.id}-${i}`}>
-              <td className="p-3 border border-b-0 border-r-0 text-left bg-white">{`$ ${month.plan.income}`}</td>
-              <td className="p-3 border border-b-0 border-l-0 text-left bg-white">{`$ ${month.fact.income}`}</td>
+              <td
+                className="p-3 border border-blue-200 border-b-0 border-r-0 text-left bg-white"
+                onMouseEnter={() => setHoveredColIndex(index)}
+                onMouseLeave={() => setHoveredColIndex(null)}
+              >
+                <span className={`transition-colors duration-150 ${hoveredColIndex === index ? "text-black" : ""}`}>
+                  $ {month.plan.income}
+                </span>
+              </td>
+              <td
+                className="p-3 border border-blue-200 border-b-0 border-l-0 text-left bg-white"
+                onMouseEnter={() => setHoveredColIndex(index)}
+                onMouseLeave={() => setHoveredColIndex(null)}
+              >
+                <span className={`transition-colors duration-150 ${hoveredColIndex === index ? "text-black" : ""}`}>
+                  $ {month.fact.income}
+                </span>
+              </td>
             </React.Fragment>
           );
         })}
-        <td className="p-3 border" rowSpan={2}>
+        <td className="p-3 border border-blue-200" rowSpan={2}>
           <p className="text-center text-gray-500">...</p>
         </td>
       </tr>
       <tr>
-        <td className="p-3 border">Active partners:</td>
-        {monthIndices.map((i) => {
+        <td className="p-3 border border-blue-200">Active partners:</td>
+        {monthIndices.map((i, index) => {
           const month = admin.months[i];
       
           if (!month) {
@@ -52,8 +72,24 @@ const ManagerRow = ({ admin, monthIndices }: ManagerRowProps) => {
 
           return (
             <React.Fragment key={`partners-${admin.id}-${i}`}>
-              <td className="p-3 border border-t-0 border-r-0 text-left bg-white">{month.plan.activePartners}</td>
-              <td className="p-3 border border-t-0 border-l-0 text-left bg-white">{month.fact.activePartners}</td>
+              <td
+                className="p-3 border border-blue-200 border-t-0 border-r-0 text-left bg-white"
+                onMouseEnter={() => setHoveredColIndex(index)}
+                onMouseLeave={() => setHoveredColIndex(null)}
+              >
+                <span className={`transition-colors duration-150 ${hoveredColIndex === index ? "text-black" : ""}`}>
+                  {month.plan.activePartners}
+                </span>
+              </td>
+              <td
+                className="p-3 border border-blue-200 border-t-0 border-l-0 text-left bg-white"
+                onMouseEnter={() => setHoveredColIndex(index)}
+                onMouseLeave={() => setHoveredColIndex(null)}
+              >
+                <span className={`transition-colors duration-150 ${hoveredColIndex === index ? "text-black" : ""}`}>
+                  {month.fact.activePartners}
+                </span>
+              </td>
             </React.Fragment>
           );
         })}
