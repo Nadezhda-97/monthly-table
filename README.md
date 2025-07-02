@@ -1,69 +1,48 @@
-# React + TypeScript + Vite
+# Таблица с данными менеджеров
+Простое одностраничное приложение, которое представляет собой таблицу с данными о работе нескольких менеджеров по месяцам. Данные получены из тестового API.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+По умолчанию на странице отображаются данные за 6 месяцев, начиная с текущего. При нажатии на стрелки данные смещаются вправо или влево на 1 месяц. Переход между месяцами — циклический (например, после декабря следует январь, и наоборот).
 
-Currently, two official plugins are available:
+**Пример:**
+- По умолчанию: июль – декабрь  
+- После нажатия на → : август – январь  
+- После нажатия на ← : июнь – ноябрь
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 💻 Технологический стек
+- React (18+)
+- TypeScript (5+)
+- Tailwind CSS (4+)
+- [lucide-react](https://lucide.dev/) — иконки
+- [Vite](https://vitejs.dev/) — сборщик и dev-сервер
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### ⚙️ Установка и запуск
+1. Клонировать репозиторий
 ```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+git clone git@github.com:Nadezhda-97/monthly-table.git
 ```
+2. Перейти в папку с проектом
+```
+cd my-app
+```
+3. Установить зависимости
+```
+npm install
+```
+4. Запуск в режиме разработки
+```
+npm run dev
+```
+Приложение будет доступно по адресу: ссылка
+
+5. Сборка
+```
+npm run build
+```
+6. Локальный запуск
+```
+npm run preview
+```
+Приложение будет доступно по адресу: http://localhost:4173/
+
+### 🔗 Демо-версия
+Готовое приложение можно посмотреть здесь: ссылка
